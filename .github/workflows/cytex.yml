@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Creating requirements file
-      - run: pipreqs --force --ignore .github/ ./
+      - run: pipreqs --force .
       - name: SBOM scan
       - run: grype dir:./ -o json
       - name: Code scan
