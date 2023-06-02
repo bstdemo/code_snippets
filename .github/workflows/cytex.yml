@@ -10,9 +10,9 @@ jobs:
     steps:
       - run: curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
       - run: python3 -m pip install semgrep
-      - run: python3 -m pip install pipreqs
+#       - run: python3 -m pip install pipreqs
       - name: Checkout
         uses: actions/checkout@v2
-      - run: pipreqs --force .
+#       - run: pipreqs --force .
       - run: grype dir:. -o json
       - run: semgrep --config=auto . --json
