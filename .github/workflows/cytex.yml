@@ -17,6 +17,7 @@ jobs:
       - run: python3 --version
       - run: |
           if [ ! -f requirements.txt ]; then
+            cat /usr/lib/python3.10/ast.py
             python -m pip install pipreqs==0.4.11
             pipreqs .
           fi
