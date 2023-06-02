@@ -13,6 +13,11 @@ jobs:
 #       - run: python3 -m pip install pipreqs
       - name: Checkout
         uses: actions/checkout@v2
+      - run: |
+          if [ ! -f requirements.txt ]; then
+            pip install pipreqs
+            pipreqs .
+          fi
 #       - run: pipreqs --force .
       - run: grype dir:. -o json
       - run: semgrep --config=auto . --json
