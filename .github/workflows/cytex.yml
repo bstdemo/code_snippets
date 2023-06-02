@@ -13,12 +13,17 @@ jobs:
 #       - run: python3 -m pip install pipreqs
       - name: Checkout
         uses: actions/checkout@v2
-      - run: python --version
-      - run: python3 --version
-      - run: |
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install pipreqs
+        run: pip install pipreqs
+
+      - name: Generate requirements.txt
+        run: |
           if [ ! -f requirements.txt ]; then
-            cat /home/runner/.local/lib/python3.10/site-packages/pipreqs/pipreqs.py
-            python -m pip install pipreqs==0.4.11
             pipreqs .
           fi
 #       - run: pipreqs --force .
