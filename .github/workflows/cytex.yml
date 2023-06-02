@@ -13,9 +13,6 @@ jobs:
       - run: python3 -m pip install pipreqs
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Creating requirements file
       - run: pipreqs --force .
-      - name: SBOM scan
-      - run: grype dir:./ -o json
-      - name: Code scan
-      - run: semgrep --config=auto ./ --json
+      - run: grype dir:. -o json
+      - run: semgrep --config=auto . --json
